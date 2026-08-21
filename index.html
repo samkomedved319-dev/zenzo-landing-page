@@ -174,6 +174,11 @@
     @media (max-width: 590px) {
       .shell { width: min(100% - 28px, 1180px); }.nav-wrap { padding-top: 10px; }.nav { height: 52px; padding-left: 11px; }.nav-actions .btn-quiet { display: none; }.brand-lockup { font-size: 14px; }.hero { padding: 65px 0 45px; }.hero-copy { font-size: 14px; }.proof-row { gap: 11px; font-size: 9px; }.app-frame { border-radius: 19px; }.app-topbar { min-height: 45px; padding: 0 12px; }.window-label span { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.live-tag { padding: 4px 6px; font-size: 7px; }.app-body { display: block; }.rail { display: none; }.room { padding: 13px; }.message { padding-top: 10px; }.stats { grid-template-columns: repeat(2, 1fr); }.section { padding: 74px 0; }.request-section { padding-top: 0; }.request-panel { padding: 22px; border-radius: 21px; }.request-form { padding: 16px; }.feature-grid { grid-template-columns: 1fr; margin-top: 32px; }.feature.wide { grid-column: auto; }.feature { min-height: 205px; padding: 20px; }.simulation { padding: 14px; margin-top: 31px; }.sim-head { display: block; }.sim-status { display: inline-block; margin-top: 10px; }.preset-row { gap: 6px; }.preset { width: 100%; text-align: left; }.cta { padding: 48px 0 60px; }.footer-inner { flex-direction: column; text-align: center; }.footer-links { gap: 13px; }
     }
+    .journey { padding: 22px; margin-top: 42px; border-radius: 24px; }.journey-head { position: relative; z-index: 1; display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 3px 4px 19px; border-bottom: 1px solid var(--line); }.journey-head h3 { margin: 0; font-size: 16px; letter-spacing: -.04em; }.journey-head p { max-width: 440px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }.journey-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 17px; }.journey-step { padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: rgba(5, 7, 13, .24); }.journey-step .step-index { display: inline-flex; align-items: center; gap: 6px; color: var(--mint); font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .06em; }.journey-step .step-index::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 11px currentColor; }.journey-step:nth-child(2) .step-index { color: var(--sky); }.journey-step:nth-child(3) .step-index { color: var(--brand-bright); }.journey-step h4 { margin: 12px 0 0; color: #edf0fa; font-size: 13px; letter-spacing: -.035em; }.journey-step p { margin: 6px 0 0; color: var(--muted-2); font-size: 10px; line-height: 1.6; }
+    .community-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 14px; margin-top: 43px; }.community-card { padding: 25px; border-radius: 22px; }.community-card > * { position: relative; z-index: 1; }.community-card .icon-box { margin-bottom: 24px; }.community-card h3 { margin: 0; color: #f4f5fc; font-size: 23px; letter-spacing: -.055em; }.community-card p { margin: 10px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }.community-points { display: grid; gap: 10px; margin-top: 21px; }.community-points span { display: flex; gap: 8px; align-items: center; color: #c8d0e2; font-size: 10px; font-weight: 700; }.community-points i { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 11px var(--mint); }.community-card .btn { margin-top: 25px; }
+    .faq-list { display: grid; gap: 8px; }.faq-item { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }.faq-item button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 15px; padding: 15px 16px; color: #e8ebf6; border: 0; background: transparent; font: inherit; font-size: 11px; font-weight: 800; text-align: left; cursor: pointer; }.faq-item button svg { width: 15px; height: 15px; color: var(--brand-bright); transition: transform .2s ease; }.faq-answer { max-height: 0; overflow: hidden; color: var(--muted); font-size: 11px; line-height: 1.7; transition: max-height .25s ease, padding .25s ease; }.faq-item[data-open="true"] { border-color: rgba(163,154,255,.34); background: rgba(122,112,255,.06); }.faq-item[data-open="true"] button svg { transform: rotate(45deg); }.faq-item[data-open="true"] .faq-answer { max-height: 160px; padding: 0 16px 15px; }
+    @media (max-width: 860px) { .journey-grid, .community-layout { grid-template-columns: 1fr; }.journey-head { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 590px) { .journey { padding: 15px; margin-top: 30px; }.journey-head { padding: 3px 2px 15px; }.community-card { padding: 20px; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; transition-duration: .001ms !important; } }
   </style>
 </head>
@@ -188,7 +193,7 @@
         <span>ZENZO</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#workspace">Workspace</a><a href="#features">Features</a><a href="#simulation">Live demo</a><a href="#privacy">Privacy</a>
+        <a href="#workspace">Workspace</a><a href="#features">Features</a><a href="#beta-journey">Beta journey</a><a href="#community">Community</a>
       </nav>
       <div class="nav-actions">
         <a class="btn btn-quiet" href="https://github.com" target="_blank" rel="noreferrer"><i data-lucide="github"></i> GitHub</a>
@@ -218,7 +223,7 @@
           <div class="request-points" aria-label="Request process">
             <span><i></i> One simple request form</span>
             <span><i></i> Staff review in the private Zenzo channel</span>
-            <span><i></i> A reply to the email address you provide</span>
+            <span><i></i> Staff follow-up and onboarding through your email</span>
           </div>
         </div>
         <div class="request-form" id="request-card">
@@ -232,6 +237,18 @@
             <p class="form-status" id="beta-request-status" role="status" aria-live="polite"></p>
           </form>
           <div class="request-success" id="beta-request-success" hidden tabindex="-1"><i data-lucide="check"></i><h3>Request received</h3><p>The Zenzo staff team has your request. They will review it and contact you through the email address you provided.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta-journey" class="section shell" style="padding-top: 40px;">
+      <div class="section-head center"><div class="section-kicker">A calm beta process</div><h2 class="section-heading">Know exactly what happens after you apply.</h2><p class="section-copy">Zenzo keeps early access simple: a short application, a real staff review, and a clear next step when your cohort is ready.</p></div>
+      <div class="journey glass" aria-label="Zenzo beta journey">
+        <div class="journey-head"><h3>From first signal to your first workspace</h3><p>We review applications in small groups so product conversations stay thoughtful and useful.</p></div>
+        <div class="journey-grid">
+          <article class="journey-step"><span class="step-index">01 · APPLY</span><h4>Tell us who you are</h4><p>Share your name and email. Your request reaches the private Zenzo staff queue directly.</p></article>
+          <article class="journey-step"><span class="step-index">02 · REVIEW</span><h4>Receive a human review</h4><p>Staff can approve, decline, or prepare a follow-up question from the same secure request card.</p></article>
+          <article class="journey-step"><span class="step-index">03 · ONBOARD</span><h4>Start with a clear path</h4><p>Approved testers receive the next steps, then can join the community and help guide the beta.</p></article>
         </div>
       </div>
     </section>
@@ -303,10 +320,23 @@
       <div><div class="section-kicker">Less context switching</div><h2 class="section-heading">Clarity is a feature, not an afterthought.</h2><p class="section-copy">Zenzo gives complex AI work a dependable shape: teams on the left, an active conversation in the center, and the operational state in view. It is designed to make agentic work feel legible.</p><div class="stats"><div class="stat"><b>Parallel</b><span>agent rooms</span></div><div class="stat"><b>MCP-ready</b><span>connected tools</span></div><div class="stat"><b>Local</b><span>model options</span></div><div class="stat"><b>Voice</b><span>dictation flow</span></div></div></div>
     </section>
 
+    <section id="community" class="section shell" style="padding-top: 36px;">
+      <div class="section-head center"><div class="section-kicker">Built with the community</div><h2 class="section-heading">A beta space for useful signals, not noise.</h2><p class="section-copy">Join the Zenzo Discord when you are ready to follow product updates, understand the beta, and share thoughtful feedback with the team.</p></div>
+      <div class="community-layout">
+        <article class="community-card spotlight-card"><div class="icon-box"><i data-lucide="messages-square"></i></div><h3>Zenzo community</h3><p>Product updates, beta guidance, and a direct place to take part in the conversation around calmer AI teamwork.</p><div class="community-points"><span><i></i> Official announcements in one place</span><span><i></i> Clear community rules and support guidance</span><span><i></i> Feedback routed to the product team</span></div><a class="btn btn-primary" href="https://discord.gg/V96Av8XeJe" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i> Open Zenzo Discord</a></article>
+        <div class="faq-list" aria-label="Frequently asked questions">
+          <article class="faq-item" data-open="false"><button type="button" aria-expanded="false"><span>Do I need a Discord account to request access?</span><i data-lucide="plus"></i></button><div class="faq-answer">No. The request form only needs your name and email. Zenzo staff review it privately and follow up through that email address.</div></article>
+          <article class="faq-item" data-open="false"><button type="button" aria-expanded="false"><span>Where does my beta request go?</span><i data-lucide="plus"></i></button><div class="faq-answer">It is delivered to a private Zenzo staff channel. Staff can review, add notes, prepare follow-up questions, and record the outcome directly on the request card.</div></article>
+          <article class="faq-item" data-open="false"><button type="button" aria-expanded="false"><span>Can I share product feedback during the beta?</span><i data-lucide="plus"></i></button><div class="faq-answer">Yes. The Zenzo community includes a structured feedback command, so ideas and bug reports can reach the staff team with useful context.</div></article>
+          <article class="faq-item" data-open="false"><button type="button" aria-expanded="false"><span>Is the beta free?</span><i data-lucide="plus"></i></button><div class="faq-answer">Zenzo Beta is currently an early-access program. If the program terms change, staff will share the details through the official Zenzo channels.</div></article>
+        </div>
+      </div>
+    </section>
+
     <section id="download" class="cta shell"><div class="cta-card glass"><div class="eyebrow"><b><i data-lucide="zap"></i></b> Build Zenzo with us</div><h2>Register for early access to Zenzo Beta.</h2><p>We are welcoming a small group of teams who want a calmer, more capable way to direct AI agents. Join the waitlist and help shape what comes next.</p><div class="hero-actions"><a class="btn btn-primary" href="#request"><i data-lucide="sparkles"></i> Register for early access</a><a class="btn btn-quiet" href="#simulation"><i data-lucide="play"></i> Explore the beta preview</a></div></div></section>
   </main>
 
-  <footer class="footer"><div class="shell footer-inner"><a class="brand-lockup" href="#top"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="m5 5 14 0L5 19h14"/></svg></span><span>ZENZO</span></a><span>Zenzo Beta — built with its earliest teams.</span><nav class="footer-links" aria-label="Footer"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#request">Request access</a><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a></nav></div></footer>
+  <footer class="footer"><div class="shell footer-inner"><a class="brand-lockup" href="#top"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="m5 5 14 0L5 19h14"/></svg></span><span>ZENZO</span></a><span>Zenzo Beta — built with its earliest teams.</span><nav class="footer-links" aria-label="Footer"><a href="#features">Features</a><a href="#beta-journey">Beta journey</a><a href="#community">Community</a><a href="#request">Request access</a><a href="https://discord.gg/V96Av8XeJe" target="_blank" rel="noreferrer">Discord</a></nav></div></footer>
 
   <script>
     lucide.createIcons();
@@ -358,6 +388,19 @@
       }, delay));
     };
     document.querySelectorAll('.preset').forEach((button) => button.addEventListener('click', () => updateSimulation(button.dataset.sim)));
+
+    document.querySelectorAll('.faq-item button').forEach((button) => button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const isOpen = item.dataset.open === 'true';
+      document.querySelectorAll('.faq-item').forEach((faq) => {
+        faq.dataset.open = 'false';
+        faq.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.dataset.open = 'true';
+        button.setAttribute('aria-expanded', 'true');
+      }
+    }));
 
     const betaRequestForm = document.getElementById('beta-request-form');
     const betaRequestStatus = document.getElementById('beta-request-status');
