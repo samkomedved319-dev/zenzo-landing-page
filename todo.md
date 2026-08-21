@@ -8,4 +8,4 @@
 - [x] Add a clear public beta journey that explains application review, follow-up, and onboarding expectations.
 - [x] Add an accessible FAQ and Discord-community guidance section to reduce applicant uncertainty.
 - [x] Add polished micro-interactions and responsive visual refinements while preserving the existing dark aurora system.
-- [ ] Validate and publish the expanded GitHub Pages experience.
+- [x] Validate and publish the expanded GitHub Pages experience.
