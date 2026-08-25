@@ -292,7 +292,12 @@
     toggle.className = 'zenzo-language-toggle';
     toggle.setAttribute('aria-label', 'Cambiar el sitio a español');
     toggle.addEventListener('click', () => applyLanguage(document.documentElement.lang === 'es' ? 'en' : 'es'));
-    nav.insertBefore(toggle, actionArea || null);
+    if (actionArea?.classList.contains('nav-actions')) {
+      const betaAction = actionArea.querySelector('.btn-primary');
+      actionArea.insertBefore(toggle, betaAction || null);
+    } else {
+      nav.insertBefore(toggle, actionArea || null);
+    }
 
     const menu = document.createElement('details');
     menu.className = 'zenzo-mobile-menu';
