@@ -17,11 +17,11 @@ The published website is available at [samkomedved319-dev.github.io/zenzo-landin
 | `privacy.html` | Draft Privacy Policy for attorney review before production use. |
 | `terms.html` | Draft Terms of Use for attorney review before production use. |
 | `owner-review.html` | Non-authenticating public human-review notice. |
-| `request.html` | Transparent early-access request notice. |
+| `request.html` | Direct early-access request form that submits privately to the Zenzo staff review bot. |
 
 ## Trust and account safety
 
-Public Zenzo pages are informational and **do not ask for GitHub, Google, workplace, or recovery-code passwords**. The early-access action opens a clearly labelled Google-hosted request form. The public source and official Pages URL are linked from the Trust Center so visitors can independently verify destinations.
+Public Zenzo pages are informational and **do not ask for GitHub, Google, Discord, workplace, or recovery-code passwords**. The early-access action opens an in-site request form that delivers only the applicant’s name and email to the private Zenzo staff review workflow. The public source and official Pages URL are linked from the Trust Center so visitors can independently verify destinations.
 
 The former public review-page behavior was replaced with a non-authenticating notice. Internal review access belongs only in approved internal workflows, not through a public URL.
 

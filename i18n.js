@@ -29,6 +29,7 @@
     'Join the beta': 'Únete a la beta',
     'Return home': 'Volver al inicio',
     'Open early-access form': 'Abrir formulario de acceso',
+    'Request early access': 'Solicitar acceso anticipado',
     'How to verify links': 'Cómo verificar enlaces',
     'Explore the workspace': 'Explorar el espacio',
     'View the official source': 'Ver el código oficial',
@@ -44,6 +45,7 @@
     'Direct product feedback': 'Comentarios directos sobre el producto',
     'Early workflow access': 'Acceso temprano a flujos',
     'Zenzo public pages never ask for account passwords. The early-access request opens a clearly labeled Google Form.': 'Las páginas públicas de Zenzo nunca solicitan contraseñas. La solicitud de acceso anticipado abre un formulario de Google claramente identificado.',
+    'Zenzo public pages never ask for account passwords. Early-access requests are sent privately to Zenzo staff for review.': 'Las páginas públicas de Zenzo nunca solicitan contraseñas. Las solicitudes de acceso anticipado se envían en privado al equipo de Zenzo para su revisión.',
     'Learn how to verify official Zenzo links.': 'Aprende a verificar los enlaces oficiales de Zenzo.',
     '3 agents online': '3 agentes en línea',
     'Product launch': 'Lanzamiento de producto',
@@ -82,6 +84,7 @@
     'Build Zenzo with us': 'Construye Zenzo con nosotros',
     'Register for early access to Zenzo Beta.': 'Regístrate para el acceso anticipado a Zenzo Beta.',
     'The request button opens a Google-hosted form; it does not request an existing account password.': 'El botón de solicitud abre un formulario alojado por Google; no solicita la contraseña de una cuenta existente.',
+    'The request is sent privately to Zenzo staff for review; it never asks for an existing account password.': 'La solicitud se envía en privado al equipo de Zenzo para su revisión; nunca solicita la contraseña de una cuenta existente.',
     'About Zenzo Beta': 'Acerca de Zenzo Beta',
     'A calmer place to': 'Un lugar más tranquilo para',
     'direct AI work.': 'dirigir el trabajo con IA.',
@@ -132,7 +135,17 @@
     'People review the work.': 'Las personas revisan el trabajo.',
     'This page does not sign anyone in.': 'Esta página no inicia sesión para nadie.',
     'Request early access.': 'Solicita acceso anticipado.',
-    'This request flow is not a Zenzo account login.': 'Este flujo de solicitud no es un inicio de sesión de Zenzo.'
+    'This request flow is not a Zenzo account login.': 'Este flujo de solicitud no es un inicio de sesión de Zenzo.',
+    'Apply directly from the official Zenzo site. Your request is sent privately to the Zenzo staff review bot in Discord; selected applicants receive next steps by email.': 'Solicita directamente desde el sitio oficial de Zenzo. Tu solicitud se envía en privado al bot de revisión del equipo de Zenzo en Discord; los solicitantes seleccionados recibirán los siguientes pasos por correo electrónico.',
+    'Early-access request': 'Solicitud de acceso anticipado',
+    'Two details are all we need to contact you.': 'Solo necesitamos dos datos para ponernos en contacto contigo.',
+    'Full name': 'Nombre completo',
+    'Email address': 'Correo electrónico',
+    'Your name': 'Tu nombre',
+    'Send request to Zenzo': 'Enviar solicitud a Zenzo',
+    'Your name and email go only to Zenzo’s private staff review workflow. This is not a login or account-creation form.': 'Tu nombre y correo electrónico van únicamente al flujo privado de revisión del equipo de Zenzo. No es un formulario de inicio ni de creación de cuenta.',
+    'Zenzo public pages never request GitHub, Google, Discord, or workplace passwords. The form only sends your name and email to the private Zenzo staff review channel.': 'Las páginas públicas de Zenzo nunca solicitan contraseñas de GitHub, Google, Discord o trabajo. El formulario solo envía tu nombre y correo electrónico al canal privado de revisión del equipo de Zenzo.',
+    'Official early-access request for Zenzo Beta.': 'Solicitud oficial de acceso anticipado para Zenzo Beta.'
   };
 
   Object.assign(es, {
