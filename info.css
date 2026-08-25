@@ -45,7 +45,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .mark { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid rgba(203, 210, 255, .3); border-radius: 10px; color: var(--brand-bright); background: linear-gradient(145deg, rgba(126, 113, 255, .3), rgba(126, 113, 255, .05)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16); }
 .mark svg { width: 18px; height: 18px; }
 .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 12px; font-weight: 700; }
-.nav-links a { position: relative; transition: color 180ms var(--ease-out); }
+.nav-links a { position: relative; display: inline-flex; align-items: center; gap: 5px; transition: color 180ms var(--ease-out); }
+.nav-links a > svg, .nav-links a > i { width: 13px; height: 13px; flex: 0 0 auto; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
 .nav-links a[aria-current="page"]::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 1px; content: ""; background: var(--brand-bright); }
 .nav-action { display: inline-flex; flex: 0 0 auto; min-height: 38px; align-items: center; justify-content: center; gap: 8px; padding: 9px 12px; border: 1px solid rgba(150, 140, 255, .28); border-radius: 11px; color: #fff; background: linear-gradient(135deg, #7066ff, #907dff); box-shadow: 0 10px 22px rgba(98, 84, 255, .24), inset 0 1px 0 rgba(255,255,255,.22); font-size: 11px; font-weight: 800; white-space: nowrap; transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out); }
@@ -139,7 +140,10 @@ tr:last-child td { border-bottom: 0; }
 .footer-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
 .footer-copy { max-width: 450px; margin: 11px 0 0; color: var(--muted-2); font-size: 11px; line-height: 1.65; }
 .footer-links { display: flex; flex-wrap: wrap; align-content: start; justify-content: flex-end; gap: 10px 18px; max-width: 430px; }
-.footer-links a { display: inline-flex; min-height: 36px; align-items: center; color: var(--muted); font-size: 11px; font-weight: 700; transition: color 160ms var(--ease-out); }
+.footer-links a { display: inline-flex; min-height: 36px; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 700; transition: color 160ms var(--ease-out); }
+.footer-links a > svg, .footer-links a > i { width: 13px; height: 13px; flex: 0 0 auto; }
+.footer-links .discord-link { padding: 0 7px; border: 1px solid rgba(153,143,255,.28); border-radius: 9px; color: #c9c5ff; background: rgba(112,102,255,.1); }
+.footer-links .discord-icon { width: 14px; height: 14px; flex: 0 0 auto; }
 .footer-links a:hover { color: #fff; }
 
 @media (max-width: 820px) {
@@ -164,7 +168,7 @@ tr:last-child td { border-bottom: 0; }
   .path-item { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 12px; }
   .path-number { width: 30px; height: 30px; }
   .footer-inner { grid-template-columns: 1fr; }
-  .footer-links { justify-content: flex-start; }
+  .footer-links { justify-content: flex-start; gap: 3px 13px; }
 }
 @media (max-width: 380px) {
   .brand > span:last-child { display: none; }

@@ -47,8 +47,11 @@
     'Learn how to verify official Zenzo links.': 'Aprende a verificar los enlaces oficiales de Zenzo.',
     '3 agents online': '3 agentes en línea',
     'Product launch': 'Lanzamiento de producto',
+    'Product': 'Producto',
     'Engineering': 'Ingeniería',
+    'Build': 'Compilar',
     'Growth ops': 'Operaciones de crecimiento',
+    'Growth': 'Crecimiento',
     'squad broadcast enabled': 'emisión de escuadra activada',
     'Workstream status': 'Estado del flujo de trabajo',
     'Audience research': 'Investigación de audiencia',
@@ -270,14 +273,16 @@
       .zenzo-language-toggle:hover { border-color:rgba(196,190,255,.55); background:rgba(126,114,255,.14); transform:translateY(-1px); }
       .zenzo-language-toggle:focus-visible, .zenzo-mobile-menu summary:focus-visible { outline:2px solid #c4beff; outline-offset:3px; }
       .zenzo-mobile-menu { display:none; position:relative; }
-      .zenzo-mobile-menu summary { display:inline-flex; min-height:38px; align-items:center; gap:6px; padding:8px 10px; border:1px solid rgba(185,198,239,.2); border-radius:11px; color:#d9ddf0; background:rgba(255,255,255,.035); font:800 10px/1 Manrope,ui-sans-serif,system-ui,sans-serif; cursor:pointer; list-style:none; }
+      .zenzo-mobile-menu summary { display:inline-flex; width:38px; min-height:38px; align-items:center; justify-content:center; padding:0; border:1px solid rgba(185,198,239,.2); border-radius:11px; color:#f2f3ff; background:rgba(255,255,255,.05); cursor:pointer; list-style:none; }
+      .zenzo-mobile-menu summary svg { width:17px; height:17px; }
       .zenzo-mobile-menu summary::-webkit-details-marker { display:none; }
-      .zenzo-mobile-menu-panel { position:absolute; z-index:60; top:calc(100% + 9px); right:0; display:grid; min-width:184px; padding:8px; border:1px solid rgba(187,198,239,.18); border-radius:14px; background:rgba(9,11,20,.97); box-shadow:0 18px 42px rgba(0,0,0,.35); backdrop-filter:blur(18px); }
-      .zenzo-mobile-menu-panel a { padding:10px; border-radius:9px; color:#cbd2e5; font:700 12px/1.25 Manrope,ui-sans-serif,system-ui,sans-serif; }
+      .zenzo-mobile-menu-panel { position:absolute; z-index:60; top:calc(100% + 9px); right:0; display:grid; min-width:208px; padding:8px; border:1px solid rgba(187,198,239,.18); border-radius:14px; background:rgba(9,11,20,.98); box-shadow:0 18px 42px rgba(0,0,0,.4); backdrop-filter:blur(18px); }
+      .zenzo-mobile-menu-panel a { display:flex; min-height:42px; align-items:center; gap:10px; padding:10px; border-radius:9px; color:#cbd2e5; font:700 12px/1.25 Manrope,ui-sans-serif,system-ui,sans-serif; }
+      .zenzo-mobile-menu-panel a svg { width:15px; height:15px; flex:0 0 auto; }
       .zenzo-mobile-menu-panel a:hover { color:#fff; background:rgba(126,114,255,.16); }
       .zenzo-legal-language-note { margin:14px 0 0; padding:10px 12px; border-left:3px solid #f6c566; border-radius:0 10px 10px 0; color:#dbcda8; background:rgba(246,197,102,.08); font:700 11px/1.55 Manrope,ui-sans-serif,system-ui,sans-serif; }
       @media (max-width:860px) { .zenzo-mobile-menu { display:block; } .zenzo-language-toggle { min-width:38px; min-height:36px; padding:8px; } }
-      @media (max-width:430px) { .zenzo-mobile-menu summary { min-width:36px; padding:8px; } .zenzo-mobile-menu summary span { display:none; } }
+      @media (max-width:430px) { .zenzo-mobile-menu summary { width:36px; min-height:36px; } }
     `;
     document.head.appendChild(style);
   }
@@ -301,7 +306,7 @@
 
     const menu = document.createElement('details');
     menu.className = 'zenzo-mobile-menu';
-    menu.innerHTML = '<summary aria-label="Open site navigation"><span>Menu</span><span aria-hidden="true">☰</span></summary><div class="zenzo-mobile-menu-panel"></div>';
+    menu.innerHTML = '<summary aria-label="Open site navigation"><i data-lucide="menu" aria-hidden="true"></i></summary><div class="zenzo-mobile-menu-panel"></div>';
     const panel = menu.querySelector('.zenzo-mobile-menu-panel');
     const links = [...navLinks.querySelectorAll('a')].map((link) => link.cloneNode(true));
     const footer = document.querySelector('.footer-links');
@@ -333,6 +338,7 @@
     injectControls();
     const preferred = localStorage.getItem(STORAGE_KEY) === 'es' ? 'es' : 'en';
     applyLanguage(preferred);
+    if (window.lucide) window.lucide.createIcons();
   }
 
   window.ZenzoI18n = { translate: (value) => translateValue(value, document.documentElement.lang) };
