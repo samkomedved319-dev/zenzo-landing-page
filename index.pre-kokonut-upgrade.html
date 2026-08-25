@@ -160,8 +160,12 @@
     .live-tag i { width: 5px; height: 5px; border-radius: 50%; background: #73e6bd; box-shadow: 0 0 10px #73e6bd; }
     .app-body { position: relative; z-index: 1; display: grid; grid-template-columns: 170px minmax(0, 1fr) 205px; min-height: 384px; }
     .rail { padding: 14px 10px; border-right: 1px solid var(--line); background: rgba(3,5,10,.21); }
-    .team-chip { display: flex; width: 100%; align-items: center; gap: 8px; margin: 0 0 4px; padding: 8px; border: 1px solid transparent; border-radius: 10px; color: var(--muted); background: transparent; font-size: 10px; font-weight: 700; text-align: left; }
+    .team-chip { display: flex; width: 100%; align-items: center; gap: 8px; margin: 0 0 4px; padding: 8px; border: 1px solid transparent; border-radius: 10px; color: var(--muted); background: transparent; font: inherit; font-size: 10px; font-weight: 700; text-align: left; cursor: pointer; appearance: none; transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out), background 180ms var(--ease-out), transform 180ms var(--ease-out); }
+    .team-chip:hover { border-color: rgba(145,132,255,.18); color: #e7e8f5; background: rgba(113,102,255,.07); }
+    .team-chip:active { transform: scale(.98); }
+    .team-chip:focus-visible { outline: 2px solid #c4beff; outline-offset: 2px; }
     .team-chip.active { border-color: rgba(145,132,255,.26); color: #f8f8ff; background: linear-gradient(90deg, rgba(113,102,255,.19), rgba(113,102,255,.04)); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .team-chip .avatar { display: grid; width: 23px; height: 23px; flex: 0 0 auto; place-items: center; border-radius: 8px; color: #dcd9ff; background: #6259d9; font-size: 9px; }
     .team-chip:nth-child(3) .avatar { color: #bce2ff; background: #2872ad; }
     .team-chip:nth-child(4) .avatar { color: #c5f6e7; background: #208064; }
@@ -387,13 +391,13 @@
         <div class="window-meta"><span class="live-tag"><i aria-hidden="true"></i> 3 agents online</span></div>
       </div>
       <div class="app-body">
-        <aside class="rail" aria-label="Teams">
-          <div class="team-chip active"><span class="avatar">PL</span><span>Product launch<small># general</small></span></div>
-          <div class="team-chip"><span class="avatar">EN</span><span>Engineering<small># build-room</small></span></div>
-          <div class="team-chip"><span class="avatar">GO</span><span>Growth ops<small># research</small></span></div>
+        <aside class="rail" aria-label="Preview workspaces">
+          <button class="team-chip active" type="button" data-team="product" aria-pressed="true" aria-controls="preview-room"><span class="avatar">PL</span><span>Product launch<small># general</small></span></button>
+          <button class="team-chip" type="button" data-team="engineering" aria-pressed="false" aria-controls="preview-room"><span class="avatar">EN</span><span>Engineering<small># build-room</small></span></button>
+          <button class="team-chip" type="button" data-team="growth" aria-pressed="false" aria-controls="preview-room"><span class="avatar">GO</span><span>Growth ops<small># research</small></span></button>
         </aside>
-        <div class="room">
-          <div class="room-head"><div class="room-title"><i data-lucide="hash" aria-hidden="true"></i> product-launch</div><small class="mono">squad broadcast enabled</small></div>
+        <div class="room" id="preview-room" aria-label="Selected workspace preview">
+          <div class="room-head"><div class="room-title"><i data-lucide="hash" aria-hidden="true"></i> <span id="preview-room-title">product-launch</span></div><small id="preview-room-context" class="mono">squad broadcast enabled</small></div>
           <div class="message"><div class="message-avatar">OR</div><div class="message-content"><div class="message-name">Core Orchestrator <span>GPT · tool routing</span></div><p>Brief received. I am splitting launch readiness into research, implementation, and QA tracks.</p></div></div>
           <div class="message"><div class="message-avatar">AN</div><div class="message-content"><div class="message-name">Research Analyst <span>web · insight layer</span></div><p>Audience signals are mapped. I found three high-intent themes to include in the narrative.</p></div></div>
           <div class="message"><div class="message-avatar">CA</div><div class="message-content"><div class="message-name">Code Architect <span>local · build path</span></div><p>Build plan is ready. The local sandbox is validating the implementation path now.</p></div></div>
@@ -469,6 +473,56 @@
         card.style.setProperty('--y', `${event.clientY - rect.top}px`);
       });
     });
+
+    const teamWorkspaces = {
+      product: {
+        title: 'product-launch',
+        context: 'squad broadcast enabled',
+        messages: [
+          'Brief received. I am splitting launch readiness into research, implementation, and QA tracks.',
+          'Audience signals are mapped. I found three high-intent themes to include in the narrative.',
+          'Build plan is ready. The local sandbox is validating the implementation path now.'
+        ]
+      },
+      engineering: {
+        title: 'build-room',
+        context: 'engineering review active',
+        messages: [
+          'Engineering brief received. I am sequencing implementation, test coverage, and release checks.',
+          'I am reviewing the affected paths and surfacing the evidence needed for a focused build decision.',
+          'The local sandbox is preparing an implementation path with dependency and quality checks.'
+        ]
+      },
+      growth: {
+        title: 'research',
+        context: 'signal review active',
+        messages: [
+          'Growth brief received. I am routing the question through audience research, synthesis, and next-step planning.',
+          'I am mapping customer themes, objections, and the strongest evidence behind each opportunity.',
+          'I am translating the highest-confidence insights into scoped experiments and measurement plans.'
+        ]
+      }
+    };
+
+    const teamButtons = [...document.querySelectorAll('.team-chip[data-team]')];
+    const previewRoomTitle = document.getElementById('preview-room-title');
+    const previewRoomContext = document.getElementById('preview-room-context');
+    const previewWindowLabel = document.querySelector('.window-label .mono');
+    const previewMessages = [...document.querySelectorAll('#preview-room .message p')];
+    const updateTeamPreview = (name) => {
+      const workspace = teamWorkspaces[name];
+      if (!workspace) return;
+      teamButtons.forEach((button) => {
+        const active = button.dataset.team === name;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      previewRoomTitle.textContent = workspace.title;
+      previewRoomContext.textContent = workspace.context;
+      previewWindowLabel.textContent = `zenzo / ${workspace.title}`;
+      previewMessages.forEach((message, index) => { message.textContent = workspace.messages[index]; });
+    };
+    teamButtons.forEach((button) => button.addEventListener('click', () => updateTeamPreview(button.dataset.team)));
 
     const simulations = {
       launch: {
