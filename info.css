@@ -98,12 +98,14 @@ h3 { margin: 0; color: #f3f5ff; font-size: 17px; letter-spacing: -.035em; }
 .list svg { width: 16px; height: 16px; color: var(--mint); }
 
 .path { display: grid; gap: 10px; margin-top: 20px; }
-.path-item { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 13px; align-items: start; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.025); }
+.path-item { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 13px; align-items: start; min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.025); }
+.path-item > div { min-width: 0; overflow-wrap: anywhere; }
 .path-number { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 9px; color: var(--brand-bright); background: rgba(126, 114, 255, .16); font-family: "DM Mono", monospace; font-size: 10px; }
 .path-item strong { display: block; font-size: 12px; }
 .path-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.55; }
 
-.doc-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(245px, .5fr); gap: 18px; margin-top: 30px; }
+.doc-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .5fr); gap: 18px; margin-top: 30px; }
+.doc-layout > *, .split > * { min-width: 0; }
 .document { padding: clamp(22px, 4vw, 42px); border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(29, 34, 51, .86), rgba(10, 13, 23, .88)); box-shadow: 0 18px 50px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.07); }
 .document h2 { margin-top: 0; font-size: clamp(28px, 4vw, 44px); }
 .document h3 { margin-top: 30px; font-size: 18px; }
@@ -155,7 +157,10 @@ tr:last-child td { border-bottom: 0; }
   h1 { font-size: clamp(39px, 12vw, 54px); }
   .lead { font-size: 14px; }
   .trust-banner { gap: 12px; padding: 15px; }
-  .document { padding: 22px 18px; }
+  .document { min-width: 0; padding: 22px 18px; }
+  .path { gap: 8px; }
+  .path-item { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 12px; }
+  .path-number { width: 30px; height: 30px; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { justify-content: flex-start; }
 }

@@ -354,6 +354,7 @@
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; transition-duration: .001ms !important; }
     }
   </style>
+  <script src="./i18n.js" defer></script>
 </head>
 <body>
   <div class="page-grid fixed inset-0 pointer-events-none" aria-hidden="true"></div>
@@ -477,6 +478,8 @@
       });
     });
 
+    const zenzoTranslate = (value) => window.ZenzoI18n?.translate ? window.ZenzoI18n.translate(value) : value;
+
     const teamWorkspaces = {
       product: {
         title: 'product-launch',
@@ -520,12 +523,16 @@
         button.classList.toggle('active', active);
         button.setAttribute('aria-pressed', String(active));
       });
-      previewRoomTitle.textContent = workspace.title;
-      previewRoomContext.textContent = workspace.context;
-      previewWindowLabel.textContent = `zenzo / ${workspace.title}`;
-      previewMessages.forEach((message, index) => { message.textContent = workspace.messages[index]; });
+      previewRoomTitle.textContent = zenzoTranslate(workspace.title);
+      previewRoomContext.textContent = zenzoTranslate(workspace.context);
+      previewWindowLabel.textContent = `zenzo / ${zenzoTranslate(workspace.title)}`;
+      previewMessages.forEach((message, index) => { message.textContent = zenzoTranslate(workspace.messages[index]); });
     };
     teamButtons.forEach((button) => button.addEventListener('click', () => updateTeamPreview(button.dataset.team)));
+    window.addEventListener('zenzo:languagechange', () => {
+      const activeTeam = teamButtons.find((button) => button.classList.contains('active'));
+      if (activeTeam) updateTeamPreview(activeTeam.dataset.team);
+    });
 
     const simulations = {
       launch: {
@@ -555,23 +562,23 @@
       if (!data) return;
       timers.splice(0).forEach((timer) => window.clearTimeout(timer));
       document.querySelectorAll('.preset').forEach((button) => button.classList.toggle('active', button.dataset.sim === name));
-      status.textContent = 'WORKING · SQUAD ACTIVE';
+      status.textContent = zenzoTranslate('WORKING · SQUAD ACTIVE');
       status.setAttribute('aria-busy', 'true');
       document.querySelectorAll('.agent-card').forEach((card) => {
         card.dataset.updated = 'false';
         card.classList.add('is-loading');
-        card.querySelector('.agent-text').textContent = 'Receiving task context and preparing the workstream…';
+        card.querySelector('.agent-text').textContent = zenzoTranslate('Receiving task context and preparing the workstream…');
       });
       const sequence = [['orchestrator', 280], ['analyst', 580], ['architect', 880]];
       sequence.forEach(([agent, delay]) => {
         const timer = window.setTimeout(() => {
           const card = document.querySelector(`[data-agent="${agent}"]`);
           if (!card) return;
-          card.querySelector('.agent-text').textContent = data[agent];
+          card.querySelector('.agent-text').textContent = zenzoTranslate(data[agent]);
           card.dataset.updated = 'true';
           card.classList.remove('is-loading');
           if (agent === 'architect') {
-            status.textContent = data.status;
+            status.textContent = zenzoTranslate(data.status);
             status.removeAttribute('aria-busy');
           }
         }, delay);
