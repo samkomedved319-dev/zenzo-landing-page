@@ -9,3 +9,4 @@
 - [x] Add an accessible FAQ and Discord-community guidance section to reduce applicant uncertainty.
 - [x] Add polished micro-interactions and responsive visual refinements while preserving the existing dark aurora system.
 - [x] Validate and publish the expanded GitHub Pages experience.
+- [x] Integrate a clear Zenzo Cloud setup entry point and one-million-token daily Ox Alpha allowance explanation into the main landing page without exposing credentials.

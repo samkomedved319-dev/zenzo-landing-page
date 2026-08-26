@@ -2,6 +2,10 @@
 
 This repository contains the public static website for **Zenzo Beta**, a product workspace concept for coordinating AI agent work in a shared, reviewable context.
 
+## Zenzo Cloud handoff
+
+`cloud.html` is the public, static entry point for protected Ox Alpha setup. It explains the **one-million-token daily allowance per registered Zenzo user** and links to the authenticated Zenzo Cloud service once that service has a stable HTTPS address. The live destination is deliberately configured only through `cloud-config.js`; that file must contain a published HTTPS Cloud URL and must never contain a provider credential, desktop installation token, or bot secret. GitHub Pages remains informational and does not proxy model requests or collect Cloud credentials.
+
 ## Live site
 
 The published website is available at [samkomedved319-dev.github.io/zenzo-landing-page](https://samkomedved319-dev.github.io/zenzo-landing-page/).
@@ -18,6 +22,7 @@ The published website is available at [samkomedved319-dev.github.io/zenzo-landin
 | `terms.html` | Draft Terms of Use for attorney review before production use. |
 | `owner-review.html` | Non-authenticating public human-review notice. |
 | `request.html` | Direct early-access request form that submits privately to the Zenzo staff review bot. |
+| `cloud.html` | Public Zenzo Cloud setup entry point and Ox Alpha daily-allowance explanation. |
 
 ## Trust and account safety
 
