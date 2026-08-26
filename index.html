@@ -500,9 +500,9 @@
       <div class="simulation glass reveal delay-1">
         <div class="sim-head"><div><h3>Product-launch / Squad broadcast</h3><p>Try a task type to update the active agent workstreams.</p></div><span class="sim-status" id="sim-status" role="status" aria-live="polite" aria-atomic="true">READY · 3 AGENTS</span></div>
         <div class="preset-row" role="group" aria-label="Demo prompt presets">
-          <button class="preset active" type="button" data-sim="launch">Plan a product launch</button>
-          <button class="preset" type="button" data-sim="analysis">Review customer signals</button>
-          <button class="preset" type="button" data-sim="build">Prepare a production build</button>
+          <button class="preset active" type="button" data-sim="launch" aria-pressed="true">Plan a product launch</button>
+          <button class="preset" type="button" data-sim="analysis" aria-pressed="false">Review customer signals</button>
+          <button class="preset" type="button" data-sim="build" aria-pressed="false">Prepare a production build</button>
         </div>
         <div class="agent-grid">
           <article class="spotlight-card agent-card" data-agent="orchestrator"><div class="agent-top"><div class="agent-id"><span class="avatar">OR</span><span><b>Core Orchestrator</b><small>GPT · tool routing</small></span></div><i class="agent-online" aria-label="Online"></i></div><p class="agent-text">Standing by for a squad directive. I will establish the plan and coordinate the handoff.</p><div class="agent-foot"><span>context: synced</span><span>ready</span></div></article>
@@ -647,7 +647,11 @@
       const data = simulations[name];
       if (!data) return;
       timers.splice(0).forEach((timer) => window.clearTimeout(timer));
-      document.querySelectorAll('.preset').forEach((button) => button.classList.toggle('active', button.dataset.sim === name));
+      document.querySelectorAll('.preset').forEach((button) => {
+        const isActive = button.dataset.sim === name;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
       status.textContent = zenzoTranslate('WORKING · SQUAD ACTIVE');
       status.setAttribute('aria-busy', 'true');
       document.querySelectorAll('.agent-card').forEach((card) => {
