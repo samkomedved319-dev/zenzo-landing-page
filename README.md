@@ -4,7 +4,7 @@ This repository contains the public static website for **Zenzo Beta**, a product
 
 ## Zenzo Cloud handoff
 
-`cloud.html` is the public, static entry point for protected Ox Alpha setup. It explains the **one-million-token daily allowance per registered Zenzo user** and links to the authenticated Zenzo Cloud service once that service has a stable HTTPS address. The live destination is deliberately configured only through `cloud-config.js`; that file must contain a published HTTPS Cloud URL and must never contain a provider credential, desktop installation token, or bot secret. GitHub Pages remains informational and does not proxy model requests or collect Cloud credentials.
+`cloud.html` is the public, static entry point for protected Ox Alpha setup. It explains the **one-million-token daily allowance per registered Zenzo user** and, when opened by Zenzo with a short-lived public state value, forwards the browser to the authenticated Zenzo Cloud desktop-authorization route. The live destination is deliberately configured only through `cloud-config.js`; that file must contain a published HTTPS Cloud URL and must never contain a provider credential, desktop installation token, authorization code, or bot secret. GitHub Pages remains informational and does not proxy model requests or collect Cloud credentials.
 
 ## Live site
 

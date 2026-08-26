@@ -10,3 +10,4 @@
 - [x] Add polished micro-interactions and responsive visual refinements while preserving the existing dark aurora system.
 - [x] Validate and publish the expanded GitHub Pages experience.
 - [x] Integrate a clear Zenzo Cloud setup entry point and one-million-token daily Ox Alpha allowance explanation into the main landing page without exposing credentials.
+- [x] Add a public, secret-free desktop authorization handoff that forwards a Zenzo-initiated one-time state to the authenticated Zenzo Cloud approval page.

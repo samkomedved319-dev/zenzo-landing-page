@@ -47,12 +47,22 @@
     const button = document.getElementById('open-cloud');
     const status = document.getElementById('cloud-status');
     const cloudUrl = typeof window.ZENZO_CLOUD_URL === 'string' ? window.ZENZO_CLOUD_URL.trim() : '';
+    const authorizationState = new URLSearchParams(window.location.search).get('state') || '';
+    const isDesktopAuthorization = new URLSearchParams(window.location.search).get('authorize') === 'desktop' && authorizationState.length >= 32;
     if (/^https:\/\//.test(cloudUrl)) {
       button.disabled = false;
-      button.querySelector('span').textContent = 'Open Zenzo Cloud';
-      status.textContent = 'Official Zenzo Cloud is ready. Continue to register a desktop securely.';
+      button.querySelector('span').textContent = isDesktopAuthorization ? 'Authorize Zenzo Cloud' : 'Open Zenzo Cloud';
+      status.textContent = isDesktopAuthorization ? 'Opening the secure Zenzo Cloud authorization page for this desktop…' : 'Official Zenzo Cloud is ready. Continue to register a desktop securely.';
       status.classList.add('ready');
-      button.addEventListener('click', () => window.location.assign(cloudUrl));
+      const openCloud = () => {
+        const target = new URL(isDesktopAuthorization ? '/authorize-desktop' : '/', cloudUrl);
+        if (isDesktopAuthorization) target.searchParams.set('state', authorizationState);
+        window.location.assign(target.toString());
+      };
+      button.addEventListener('click', openCloud);
+      if (isDesktopAuthorization) window.setTimeout(openCloud, 400);
+    } else if (isDesktopAuthorization) {
+      status.textContent = 'Zenzo Cloud is not published yet, so this desktop cannot be authorized. Return to Zenzo and try again after the official service is live.';
     }
     if (window.lucide) window.lucide.createIcons();
   </script>

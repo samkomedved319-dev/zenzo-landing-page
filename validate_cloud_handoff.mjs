@@ -12,6 +12,8 @@ test('landing page links to the Zenzo Cloud setup entry point', () => {
   assert.match(home, /href="\.\/cloud\.html"/)
   assert.match(cloud, /One personal daily allowance/)
   assert.match(cloud, /Server-only/)
+  assert.match(cloud, /authorize-desktop/)
+  assert.match(cloud, /isDesktopAuthorization/)
 })
 
 test('public Cloud handoff configuration contains no credentials', () => {
